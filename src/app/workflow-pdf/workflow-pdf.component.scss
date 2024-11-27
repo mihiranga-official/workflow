@@ -1,0 +1,41 @@
+.main {
+  border: 3px solid black;
+}
+.left-divider {
+  margin: 1%;
+  padding: 1%;
+  border: 1px solid black;
+
+}
+.middle-divider {
+  margin: 1%;
+  padding: 1%;
+  border: 1px solid black;
+
+}
+.right-divider {
+  margin: 1%;
+  padding: 1%;
+  border: 1px solid black;
+
+}
+.header {
+    height: 20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.second-container {
+  border: 1px solid black;
+}
+.second-container {
+  display: grid;
+  grid-template-columns: 1fr repeat(15, 3fr);
+  margin: 1%;
+  padding: 1%;
+  border: 1px solid black;
+  div {
+    border: 1px solid black;
+  }
+  text-align: center;
+  font-size: large;
+}
