@@ -1,67 +1,63 @@
+<form >
 <div class="main">
-  <div class="header">
+  <div class="header" *ngFor="let item of datasets">
     <div class="left-divider">
-      <p>Employee Work Flow : {{ workflow }}</p>
-      <p>Division : {{ workflow }}</p>
-      <p>Epf NO : {{ workflow }}</p>
-      <p>Name :{{ workflow }}</p>
+      <p>Employee Work Flow : {{ item.month }}</p>
+      <p>Division : {{ item.divisionName }}</p>
+      <p>Epf NO : {{ item.epfNumber }}</p>
+      <p>Name :{{ item.employeeName }}</p>
     </div>
     <div class="middle-divider">
-      <p>Basic Salary : {{ workflow }}</p>
-      <p>Service Year : {{ workflow }}</p>
-      <p>Extra Piecerate {{ workflow }}</p>
-      <p>Extra Piecerate :{{ workflow }}</p>
-      <p>Hourly Rate :{{ workflow }}</p>
-      <p>Max Hourly Wage :{{ workflow }}</p>
-    
+      <p>Basic Salary : {{ item.basicSalary }}</p>
+      <p>Service Year : {{ item.serviceYear }}</p>
+      <p>Extra Piecerate {{ item.extraPiecerateSalary }}</p>
+      <p>Extra Piecerate :{{ item.extraPieceRatePercentage }}%</p>
+      <p>Hourly Rate :{{ item.rate }}</p>
+      <p>Max Hourly Wage :{{ item.workflow }}</p>
     </div>
 
     <div class="right-divider">
-      <p>Piecerate Hours : {{ workflow }}</p>
-      <p>Normal Hours : {{ workflow }}</p>
-      <p>Total Hours : {{ workflow }}</p>
-      <p>Piecerate Salary :{{ workflow }}</p>
-      <p>Maximum Piecerate Value :{{ workflow }}</p>
+      <p>Piecerate Hours : {{ item.workflow }}</p>
+      <p>Normal Hours : {{ item.workflow }}</p>
+      <p>Total Hours : {{ item.workflow }}</p>
+      <p>Piecerate Salary :{{ item.workflow }}</p>
+      <p>Maximum Piecerate Value :{{ item.workflow }}</p>
     </div>
   </div>
   <div class="second-container">
-         <form action="">
-        <table style="width: 150%;" >
-          <thead >
+    <form action="">
+      <table style="width: 150%">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Total Earnings</th>
+            <th>Total Piecerate(A)</th>
+            <th>Effiency (Loss)</th>
+            <th>In Date & Time</th>
+            <th>Out Date & Time</th>
+            <th>Shift</th>
+            <th>Section</th>
+            <th>O/T (H)</th>
+            <th>Acvity</th>
+            <th>Op Hp</th>
+            <th>Qty Per Emp (D)</th>
+            <th>Rate (E)</th>
+            <th>Piecerate Amount : F=(DxE)</th>
+            <th>Rate-N (E)</th>
+            <th>Piecerate AmountN : F=(DxE)</th>
+          </tr>
+        </thead>
+
+        <ng-container>
+          <tbody *ngFor="let date of datasets">
             <tr>
-              <th>Date</th>
-              <th>Total Earnings</th>
-              <th>Total Piecerate(A)</th>
-              <th>Effiency (Loss)</th>
-              <th>In Date & Time</th>
-              <th>Out Date & Time</th>
-              <th>Shift</th>
-              <th>Section</th>
-              <th>O/T (H)</th>
-              <th>Acvity</th>
-              <th>Op Hp</th>
-              <th>Qty Per Emp (D)</th>
-              <th>Rate (E)</th>
-              <th>Piecerate Amount : F=(DxE)</th>
-              <th>Rate-N (E)</th>
-              <th>Piecerate AmountN : F=(DxE)</th>
-            </tr>
-      
-          </thead>
-          <tbody>
-            <tr **ngFor="let date of list">
-              <td>{{date.date}}</td>
+              <td>{{ date }}</td>
               <td>1</td>
             </tr>
-            
           </tbody>
-        </table>
-      </form>
-
-
-
-    
-
-
+        </ng-container>
+      </table>
+    </form>
   </div>
 </div>
+</form>

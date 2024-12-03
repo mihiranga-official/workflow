@@ -4,7 +4,7 @@ import { IWorkflow } from './workflow';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WorkflowService {
 
