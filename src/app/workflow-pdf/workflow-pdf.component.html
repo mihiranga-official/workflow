@@ -26,18 +26,18 @@
     </div>
     <div class="second-container">
       <form action="">
-        <table style="width: 150%">
+        <table>
           <thead>
             <tr>
               <th>Total Earnings</th>
               <th>Total Piecerate(A)</th>
               <th>Total Dailypay B = (K+G+H)</th>
               <th>Effiency (Loss)</th>
-              <th colspan="2">In Date & Time</th>
-              <th colspan="2">Out Date & Time</th>
+              <th>In Date & Time</th>
+              <th>Out Date & Time</th>
               <th>Shift</th>
               <th>Section</th>
-              <th rowspan="3">O/T (H)</th>
+              <th>O/T (H)</th>
               <th>Acvity</th>
               <th>Op Hp</th>
               <th>Qty Per Emp (D)</th>
@@ -51,21 +51,34 @@
           <ng-container>
             <tbody *ngFor="let date of Root">
               <tr>
-                <td>{{ acvity }}</td>
-                <td>{{ acvity }}</td>
-                <td>{{ acvity }}</td>
-                <td>{{ acvity }}</td>
-                <td>{{ acvity }}</td>
-                <td>{{ acvity }}</td>
-                <td>{{ acvity }}</td>
-                <td>{{ acvity }}</td>
-                <td>a</td>
-              </tr>
-              <tr>
-                <td colspan="2">English</td>
-                <td rowspan="2">testing</td>
-                <td>2</td>
-              </tr>
+                <td rowspan="2">2</td>
+                <td rowspan="2">2887.41</td>
+                <td rowspan="2">233</td>
+                <td rowspan="2">23</td>
+                <td rowspan="2">sadf
+                </td>
+                <td rowspan="2">2<br>08:00</td>
+                <td rowspan="2">2<br>18:00</td>
+                <td rowspan="2">Normal</td>
+                <td rowspan="2">Drill</td>
+                <td rowspan="2">234.38</td>
+                <td>KBCA 007 - 44.00</td>
+                <td>1:7</td>
+                <td>5.50</td>
+                <td>306.25 Hp</td>
+                <td>1684.38</td>
+                <td>ABC</td>
+           
+            </tr>
+            <tr>
+                <td>KBPR 008 - 30.00</td>
+                <td>1:7</td>
+                <td>3.75</td>
+                <td>320.81 Hp</td>
+                <td>1203.04</td>
+                <td>as</td>
+       
+            </tr>
             </tbody>
           </ng-container>
         </table>
@@ -73,20 +86,3 @@
     </div>
   </div>
 </form>
-<table>
-  <thead>
-    <th>namae</th>
-    <th>namae</th>
-
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="2">ABCDEFGHIJKLMNOPQRST</td>
-      <td>2</td>
-    </tr>
-
-    <tr>
-      <td>ABCDEFGHIJKLMNT</td>
-    </tr>
-  </tbody>
-</table>
