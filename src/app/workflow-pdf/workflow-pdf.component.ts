@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { WorkflowService } from './workflow.service';
+import { IWorkflow } from './workflow';
 
 @Component({
   selector: 'app-workflow-pdf',
@@ -18,7 +19,10 @@ export class WorkflowPDFComponent implements OnInit{
   }
   
   Root:any[]=[]
+  RootTwo:any[]=[]
+
   ngOnInit(): void {
+    console.log(this.Root); 
     this.serviceWorkflow.getAllWorkFlow()
   .subscribe({
     next:res=>{

@@ -8,7 +8,7 @@
         <p>Name :{{ item.employeeName }}</p>
       </div>
       <div class="middle-divider">
-        <p>Basic Salary : {{ item.basicSalary }}</p>
+        <p>Basic Salary : {{ item.basicSalary | number : "1.2-2" }}</p>
         <p>Service Year : {{ item.serviceYear }}</p>
         <p>Extra Piecerate {{ item.extraPiecerateSalary }}</p>
         <p>Extra Piecerate :{{ item.extraPieceRatePercentage }}%</p>
@@ -25,64 +25,98 @@
       </div>
     </div>
     <div class="second-container">
-      <form action="">
-        <table>
-          <thead>
-            <tr>
-              <th>Total Earnings</th>
-              <th>Total Piecerate(A)</th>
-              <th>Total Dailypay B = (K+G+H)</th>
-              <th>Effiency (Loss)</th>
-              <th>In Date & Time</th>
-              <th>Out Date & Time</th>
-              <th>Shift</th>
-              <th>Section</th>
-              <th>O/T (H)</th>
-              <th>Acvity</th>
-              <th>Op Hp</th>
-              <th>Qty Per Emp (D)</th>
-              <th>Rate (E)</th>
-              <th>Piecerate Amount : F=(DxE)</th>
-              <th>Rate-N (E)</th>
-              <th>Piecerate AmountN : F=(DxE)</th>
-            </tr>
-          </thead>
+      <table>
+        <thead>
+          <tr>
+            <th>Total Earnings</th>
+            <th>Total Piecerate(A)</th>
+            <th>Total Dailypay B = (K+G+H)</th>
+            <th>Effiency (Loss)</th>
+            <th>In Date & Time</th>
+            <th>Out Date & Time</th>
+            <th>Shift</th>
+            <th>Section</th>
+            <th>O/T (H)</th>
+            <th>Acvity</th>
+            <th>Op Hp</th>
+            <th>Qty Per Emp (D)</th>
+            <th>Rate (E)</th>
+            <th>Piecerate Amount : F=(DxE)</th>
+            <th>Rate-N (E)</th>
+            <th>Piecerate AmountN : F=(DxE)</th>
+          </tr>
+        </thead>
 
-          <ng-container>
-            <tbody *ngFor="let date of Root">
+        <ng-container>
+          <tbody *ngFor="let workflow of Root">
+            <!-- Iterate over dailySums -->
+            <ng-container *ngFor="let dailySum of workflow.dailySums">
               <tr>
-                <td rowspan="2">2</td>
-                <td rowspan="2">2887.41</td>
-                <td rowspan="2">233</td>
-                <td rowspan="2">23</td>
-                <td rowspan="2">sadf
+               
+                <td [attr.rowspan]="dailySum.timePortionSums.length || 2">
+                  {{ dailySum.sumPieceRate | number: "1.2-2" }}
                 </td>
-                <td rowspan="2">2<br>08:00</td>
-                <td rowspan="2">2<br>18:00</td>
-                <td rowspan="2">Normal</td>
-                <td rowspan="2">Drill</td>
-                <td rowspan="2">234.38</td>
-                <td>KBCA 007 - 44.00</td>
-                <td>1:7</td>
-                <td>5.50</td>
-                <td>306.25 Hp</td>
-                <td>1684.38</td>
-                <td>ABC</td>
-           
-            </tr>
-            <tr>
-                <td>KBPR 008 - 30.00</td>
-                <td>1:7</td>
-                <td>3.75</td>
-                <td>320.81 Hp</td>
-                <td>1203.04</td>
-                <td>as</td>
-       
-            </tr>
-            </tbody>
-          </ng-container>
-        </table>
-      </form>
+                <td [attr.rowspan]="dailySum.timePortionSums.length || 2">
+                  {{ dailySum.sumPieceRate | number: "1.2-2" }}
+                </td>
+                <td [attr.rowspan]="dailySum.timePortionSums.length || 2">
+                  {{ dailySum.sumDailyPay | number: "1.2-2" }}
+                </td>
+                <td [attr.rowspan]="dailySum.timePortionSums.length || 1">
+                  {{ dailySum.sumDifference | number: "1.2-2" }}
+                </td>
+                
+            
+          
+                
+                <ng-container *ngIf="dailySum.timePortionSums.length > 0">
+                  <td>
+                    {{ dailySum.timePortionSums[0].inDate | date: "d HH:mm" }}
+                  </td>
+                  <td>
+                    {{ dailySum.timePortionSums[0].outDate | date: "d HH:mm" }}
+                  </td>
+                  <td>
+                    {{ dailySum.timePortionSums[0].shiftName }}
+                  </td>
+                  <td>
+                    {{ dailySum.timePortionSums[0].sectionName }}
+                  </td>
+                  <td>
+                    {{ dailySum.timePortionSums[0].overTimeAmount | number: "1.2-2" }}
+                  </td>
+                  <td>
+                    {{ dailySum.timePortionSums[0].activityName | number: "1.2-2" }}
+                  </td>
+                  
+                </ng-container>
+              </tr>
+          
+            
+              <tr *ngFor="let timePortions of dailySum.timePortionSums.slice(1)">
+                <td>
+                  {{ timePortions.inDate | date: "d HH:mm" }}
+                </td>
+                <td>
+                  {{ timePortions.outDate | date: "d HH:mm" }}
+                </td>
+                <td>
+                  {{ timePortions.shiftName }}
+                </td>
+                <td>
+                  {{ timePortions.sectionName }}
+                </td>
+                <td>
+                  {{ timePortions.overTimeAmount | number: "1.2-2" }}
+                </td>
+              </tr>
+              
+            </ng-container>
+          </tbody>
+          
+          
+        </ng-container>
+      </table>
     </div>
   </div>
 </form>

@@ -1,5 +1,6 @@
 
     export type Root = IWorkflow[]
+    export type RootTwo=TimePortionSum[]
 
     export interface IWorkflow {
       divisionName: string
